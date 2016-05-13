@@ -8,7 +8,6 @@ compiler:
   - clang
 
 os:
-  - linux
   - osx
 
 env:
@@ -16,79 +15,15 @@ env:
     - BUILD_REVISION=official
     - OPTIONS="openssl=builtin"
   matrix:
-    - PLATFORM=iphone TARGET=release
-    - PLATFORM=iphone TARGET=release_debug
-    - PLATFORM=javascript
-    - PLATFORM=osx BITS=32 TOOLS=yes
-    - PLATFORM=osx BITS=32 TOOLS=no
-    - PLATFORM=osx BITS=64 TOOLS=yes
-    - PLATFORM=osx BITS=64 TOOLS=no
-    - PLATFORM=server BITS=64 TOOLS=yes
-    - PLATFORM=x11 BITS=32 TOOLS=yes
-    - PLATFORM=x11 BITS=32 TOOLS=no
-    - PLATFORM=x11 BITS=64 TOOLS=yes
-    - PLATFORM=x11 BITS=64 TOOLS=no
     - PLATFORM=android TARGET=release
     - PLATFORM=android TARGET=release_debug
 
 matrix:
   exclude:
-    - os: linux
-      env: PLATFORM=android TARGET=release
-    - os: linux
-      env: PLATFORM=android TARGET=release_debug
-    - os: linux
-      env: PLATFORM=iphone TARGET=release
-    - os: linux
-      env: PLATFORM=iphone TARGET=release_debug
-    - os: linux
-      env: PLATFORM=javascript
-    - os: linux
-      env: PLATFORM=osx BITS=32 TOOLS=yes
-    - os: linux
-      env: PLATFORM=osx BITS=32 TOOLS=no
-    - os: linux
-      env: PLATFORM=osx BITS=64 TOOLS=yes
-    - os: linux
-      env: PLATFORM=osx BITS=64 TOOLS=no
-    - os: osx
-      env: PLATFORM=server BITS=64 TOOLS=yes
-    - os: osx
-      env: PLATFORM=x11 BITS=32 TOOLS=yes
-    - os: osx
-      env: PLATFORM=x11 BITS=32 TOOLS=no
-    - os: osx
-      env: PLATFORM=x11 BITS=64 TOOLS=yes
-    - os: osx
-      env: PLATFORM=x11 BITS=64 TOOLS=no
-    - compiler: gcc
-      env: PLATFORM=iphone TARGET=release
-    - compiler: gcc
-      env: PLATFORM=iphone TARGET=release_debug
-    - compiler: gcc
-      env: PLATFORM=javascript
-    - compiler: gcc
-      env: PLATFORM=osx BITS=32 TOOLS=yes
-    - compiler: gcc
-      env: PLATFORM=osx BITS=32 TOOLS=no
-    - compiler: gcc
-      env: PLATFORM=osx BITS=64 TOOLS=yes
-    - compiler: gcc
-      env: PLATFORM=osx BITS=64 TOOLS=no
     - compiler: clang
       env: PLATFORM=android TARGET=release
     - compiler: clang
       env: PLATFORM=android TARGET=release_debug
-    - compiler: clang
-      env: PLATFORM=server BITS=64 TOOLS=yes
-    - compiler: clang
-      env: PLATFORM=x11 BITS=32 TOOLS=yes
-    - compiler: clang
-      env: PLATFORM=x11 BITS=32 TOOLS=no
-    - compiler: clang
-      env: PLATFORM=x11 BITS=64 TOOLS=yes
-    - compiler: clang
-      env: PLATFORM=x11 BITS=64 TOOLS=no
 
 
 before_script:
