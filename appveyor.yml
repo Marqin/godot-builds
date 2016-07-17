@@ -35,19 +35,22 @@ environment:
 
 install:
   - SET "PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - python -m pip install --upgrade pip
+  - pip install pypiwin32
   - pip install --egg scons  # it will fail on AppVeyor without --egg flag
   - if defined VS call "%VS%" %ARCH%  # if defined - so we can also use mingw
   - git submodule update --init --recursive # download submodules
 
 before_build:
   - echo %BUILD_REVISION%
+  - echo %NUMBER_OF_PROCESSORS%
   - python --version
   - scons --version
   - cl.exe
 
 build_script:
   - cd godot
-  - scons platform=windows target=%TARGET% tools=%TOOLS%
+  - scons platform=windows target=%TARGET% tools=%TOOLS% -j3
 
 deploy:
   description: 'Godot binaries deployed by Travis CI and AppVeyor'
